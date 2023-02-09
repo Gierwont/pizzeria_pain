@@ -1,0 +1,8 @@
+table,
+td,
+th {
+  border-style: solid;
+  border-color: black;
+  border-collapse: collapse;
+  text-align: center;
+}
