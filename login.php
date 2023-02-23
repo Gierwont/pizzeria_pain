@@ -17,7 +17,8 @@ session_start();
 
     $login= $_POST['login'];
     $_SESSION["login"] = $login;
-    $pass= sha1($_POST['pass']);
+    $pass = szyfruj_cezara(sha1($_POST['pass']),3);
+
 
     $result = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(*) FROM `user` WHERE `login` = '$login' AND `haslo` = '$pass'")); 
     if ($result[0] == 0) {

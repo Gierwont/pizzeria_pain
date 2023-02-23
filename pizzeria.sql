@@ -28,3 +28,9 @@ CREATE TABLE pizza_order (
     ordered_by VARCHAR(50),
     is_sent VARCHAR(50)
 );
+
+ALTER TABLE pizza_order ADD COLUMN user_id INT;
+ALTER TABLE pizza_order ADD COLUMN pizza_id INT;
+
+ALTER TABLE pizza_order ADD FOREIGN KEY (user_id) REFERENCES user(id);
+ALTER TABLE pizza_order ADD FOREIGN KEY (pizza_id) REFERENCES pizza(id);
