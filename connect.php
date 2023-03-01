@@ -25,4 +25,3 @@ function szyfruj_cezara($haslo, $przesuniecie)
             }
             return $zaszyfrowane;
         }
-?>

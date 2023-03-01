@@ -13,56 +13,43 @@ session_start();
 </head>
 
 <body>
-    <?php
-    require('connect.php');
+    <div class="container" id="subpage">
 
 
-    if ($_POST['login'] == "" || $_POST['pass'] == "") {
-        echo "<h1 class='text'>podałeś puste hasło lub login</h1>";
-    } else {
-        $login = $_POST['login'];
-        $email = $_POST['email'];
-        // function szyfruj_cezara($haslo, $przesuniecie)
-        // {
-        //     $zaszyfrowane = "";
-        //     $dlugosc = strlen($haslo);
-        //     for ($i = 0; $i < $dlugosc; $i++) {
-        //         $kod = ord($haslo[$i]);
-        //         if (ctype_alpha($haslo[$i])) {
-        //             $kod_szyfr = ($kod + $przesuniecie - ($kod >= 65 && $kod <= 90 && $kod + $przesuniecie > 90 || $kod >= 97 && $kod <= 122 && $kod + $przesuniecie > 122) * 26);
-        //             $zaszyfrowane .= chr($kod_szyfr);
-        //         } else {
-        //             $zaszyfrowane .= $haslo[$i];
-        //         }
-        //     }
-        //     return $zaszyfrowane;
-        // }
+        <?php
+        require('connect.php');
 
 
-
-        $pass = szyfruj_cezara(sha1($_POST['pass']),3);
-
-
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $sql = "INSERT INTO user (login,haslo,email,admin) VALUES ('$login','$pass','$email',0)";
-
-            if (mysqli_query($conn, $sql)) {
-                echo "<h1>Dodano rekord</h1>";
-            } else {
-                echo '<div class="text"><h1>błąd: ' . $sql . mysqli_error($conn) . '</h1></div>';
-            }
+        if ($_POST['login'] == "" || $_POST['pass'] == "") {
+            echo "<h1>podałeś puste hasło lub login</h1>";
         } else {
-            echo ("Podano niepoprawny adres email");
+            $login = $_POST['login'];
+            $email = $_POST['email'];
+
+
+
+            $pass = szyfruj_cezara(sha1($_POST['pass']), 3);
+
+
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $sql = "INSERT INTO user (login,haslo,email,admin) VALUES ('$login','$pass','$email',0)";
+
+                if (mysqli_query($conn, $sql)) {
+                    echo "<h1>Dodano rekord</h1>";
+                } else {
+                    echo '<div class="text"><h1>błąd: ' . $sql . mysqli_error($conn) . '</h1></div>';
+                }
+            } else {
+                echo ("<h1>Podano niepoprawny adres email</h1>");
+            }
         }
 
 
-    }
-
-
-    mysqli_close($conn);
-    ?>
-    <br>
-    <div class="text"><a href="index.php">Powrót</a></div>
+        mysqli_close($conn);
+        ?>
+        <br>
+        <div class="text"><a href="index.php">Powrót</a></div>
+    </div>
 </body>
 
 </html>

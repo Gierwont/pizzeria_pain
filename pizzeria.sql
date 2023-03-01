@@ -6,7 +6,7 @@ CREATE TABLE user (
     admin BIT,
     PRIMARY KEY (id)
     );
-INSERT INTO user(login,haslo,email,admin) VALUES ("admin","d033e22ae348aeb5660fc2140aec35850c4da997","macius2115@gmail.com",1);
+INSERT INTO user(login,haslo,email,admin) VALUES ("admin","g033h22dh348dhe5660if2140dhf35850f4gd997","macius2115@gmail.com",1); --login: admin password: admin
 
 CREATE TABLE pizza (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE pizza_order (
     numer INT,
     city VARCHAR(50),
     street VARCHAR(50),
-    ordered_by VARCHAR(50),
+    ordered_by INT,
     is_sent VARCHAR(50)
 );
 

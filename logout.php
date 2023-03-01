@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +11,15 @@ session_start();
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="text">
-    <h1>Wylogowano pomyślnie</h1>
-    <a href="index.php">Powrót</a></div>
+    <div class="container" id="subpage">
+        <h1>Wylogowano pomyślnie</h1>
+        <a href="index.php">Powrót</a>
+    </div>
     <?php
     session_destroy()
     ?>
 </body>
+
 </html>
